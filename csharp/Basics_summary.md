@@ -10,17 +10,17 @@ After reading these documents, you should have the following basic knowledge.
 
 - Boolean: bool, true, false
 - Numeric types
-    - Integral types: byte, short, ushort, int, uint, long, ulong
-    - Floating point numbers: float, double, understand that these are *inprecise*. See [Floating point comparison](https://floating-point-gui.de/errors/comparison/) to understand why you should never use these to represent *money*.
+    - Integral types: byte, sbyte, short, ushort, int, uint, long, ulong
+    - Floating point numbers: half, float, double, understand that these are *inprecise*. See [Floating point comparison](https://floating-point-gui.de/errors/comparison/) to understand why you should never use these to represent *money*.
     - Monetary types: decimal (16 bytes), allows *exact* representation of fractional numbers
 	- [String formatting](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings)
 	- Special types for specific purposes can be found in [System.Numerics](https://learn.microsoft.com/en-us/dotnet/api/system.numerics?view=net-8.0)
 - Date and time: DateTime, TimeSpan, DateTimeOffset, DateOnly, TimeOnly
     - DateTime.Now <> DateTime.UtcNow
 	- [String formatting](https://learn.microsoft.com/en-us/dotnet/standard/base-types/standard-date-and-time-format-strings)
-	- TODO: NodaTime
-	- TODO: DateTimeKind
-	- TODO: Stopwatch / GetTimestamp() / GetEllapsedTime
+	- `DateTimeKind` determines if a `DateTime` instance uses local time or UTC time.
+	- Use `Stopwatch` `GetTimestamp()` and `GetEllapsedTime(x)` when you need to track duration since start of the application. Never track duration with TimeStamp, since it will fail during summer/winter time changes.
+	- Use [NodaTime](https://nodatime.org/) when you need more advanced date and time functionality.
 - char
 - string
     - Reference type, so it can contain `null`.
@@ -82,8 +82,10 @@ What you shouldn't focus on as a beginner:
 - [Record](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/records)
 - [Interface](https://learn.microsoft.com/en-us/dotnet/csharp/fundamentals/types/interfaces)
 - [Generics](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/generics/generic-type-parameters)
-
-- TODO: structures, nested types, partial classes, attributes
+- [Nested Types](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/nested-types)
+- [Partial Classes and Methods](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods)
+- [Attributes](https://learn.microsoft.com/en-us/dotnet/csharp/advanced-topics/reflection-and-attributes/)
+- TODO: structures, attributes, inheritance, MSIL
 
 
 ### Members
@@ -99,7 +101,7 @@ What you shouldn't focus on as a beginner:
 - [Polymorphism](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/versioning-with-the-override-and-new-keywords): `abstract`, `override`, `new`
 - [Finalizers](https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/finalizers)
 
-- TODO: indexers, methods, inner types, delegates, partial methods
+- TODO: indexers, methods, inner types, delegates, partial methods, extension methods
 
 ### Expressions
 
@@ -118,6 +120,12 @@ See [the full overview](https://learn.microsoft.com/en-us/dotnet/csharp/language
 - [Null coalescing](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-coalescing-operator): `var1 ?? var2` and `var ??= new MyClass()`
 - [Null Forgiving](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/null-forgiving): `myVar!.x`
 - [Lambda Expression](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/lambda-operator): `() => {}`
+- [Switch Expression](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/switch-expression)
+    - [Constant Pattern](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#constant-pattern): integer, char, string, bool, enum, const value, null
+    - [Relational Pattern](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#relational-patterns): `<`, `>`, `<=`, `>=`
+    - [Logical Pattern](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#logical-patterns): `and`, `or`, `not`
+    - [Property Pattern](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#property-pattern): Test multiple properties at once
+    - [Discard Pattern](https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns#discard-pattern): `_` to match all other values
 - Collection expressions: TODO
 - TODO: default, await, default, default(T), default!, new, typeof, nameof, sizeof, user defined operators
 - TODO: patterns https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/operators/patterns
@@ -135,7 +143,7 @@ See the [full preprocessor directive reference](https://learn.microsoft.com/en-u
 
 - operators, overloading
 - async/await / await foreach / await using
-- switch expression, pattern matching, pattern subsumption, pattern exhaustiveness
+- pattern subsumption, pattern exhaustiveness
 - is/as, casting
 - var
 - lambda
@@ -144,3 +152,4 @@ See the [full preprocessor directive reference](https://learn.microsoft.com/en-u
 - tuple, tuple return syntax, multi assign
 - dynamic, typeof, nameof
 - Action, delegate
+- Span, ReadOnlySpan, Memory
