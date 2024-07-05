@@ -6,8 +6,10 @@ Don't use non-generic collection types in the `System.Collections` namespace (e.
 
 Only use collections from the following namespaces:
 - `System.Collections.Generic`: 95% of the use cases
-- `System.Collections.Concurrent`: used in multi-threaded code 
-- `System.Collections.Immutable`
+- `System.Collections.Concurrent`: used in multi-threaded code
+- `System.Collections.Immutable`: used when the collection never changes after it's initial value
+
+TODO: some info about collection capacities
 
 ## Big-O notation
 
@@ -18,7 +20,8 @@ For example, sorted from best to worst:
 - `O(n)`: linear time
 - `O(n.log n)`: linearithmic
 - `O(n²)`: quadratic
-- `O(c^n)`: expontential
+- `O(c^n)`: exponential
+
 
 See [wikibooks][(https://en.wikipedia.org/wiki/Big_O_notation](https://en.wikibooks.org/wiki/A-level_Computing_2009/AQA/Problem_Solving,_Programming,_Operating_Systems,_Databases_and_Networking/Problem_Solving/Big_O_Notation)) for more information.
 
@@ -66,3 +69,4 @@ e.g.:
 - Deques (double ended queue): used to efficiently add/remove elements from both ends of the collection
 - Adjaceny list/matrix: used in combination with graph data structures
 - R-tree: specialized tree structure for multidimensional data (e.g. geo coords)
+- ...
