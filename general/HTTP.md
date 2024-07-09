@@ -79,15 +79,15 @@ Example:
 
 In the context of HTTP, a resource is any content that can be identified and accessed via the web. This includes:
 
-HTML documents: Web pages.
-Images: JPEG, PNG, GIF files.
-Videos: MP4, AVI files.
-APIs: JSON or XML data endpoints.
-Scripts: JavaScript files.
-Stylesheets: CSS files.
-Each resource is identified by a *URI* (Uniform Resource Identifier).
+- HTML documents: Web pages.
+- Images: JPEG, PNG, GIF files.
+- Videos: MP4, AVI files.
+- APIs: JSON or XML data endpoints.
+- Scripts: JavaScript files.
+- Stylesheets: CSS files.
+- Each resource is identified by a *URI* (Uniform Resource Identifier).
 
-## URI vs URL
+## URI vs URL vs URN
 
 *URI (Uniform Resource Identifier)*
 A URI is a string that identifies a resource either by location, name, or both. It is a generic term that includes both URLs and URNs.
@@ -110,8 +110,9 @@ Differences
 
 A URI (Uniform Resource Identifier) can be broken down into several components:
 
-- Scheme: Indicates the protocol (e.g., http, https).
+- Scheme: Indicates the protocol (e.g., http, https, ftp, ssh, ...).
 - Authority: Composed of the user information, host, and port (e.g., user:password@host:port).
+  - Default ports: 80 `http`, 443 `https`, 21 `ftp`, 22 `ssh`, ...
 - Path: Specifies the resource location (e.g., /path/to/resource).
 - Query: Contains query parameters (e.g., ?key1=value1&key2=value2).
 - Fragment: Indicates a specific part of the resource (e.g., #section1).
